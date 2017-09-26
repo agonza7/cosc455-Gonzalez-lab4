@@ -1,28 +1,28 @@
 package edu.towson.cosc.cosc455.agonza7.lab4
 
-/*
-COSC 455 Programming Languages: Implementation and Design
-Lab 4 - A Simple Lexical Analyzer
-Andy Gonzalez-Campos
+/**
+*COSC 455 Programming Languages: Implementation and Design
+*Lab 4 - A Simple Lexical Analyzer
+*Andy Gonzalez-Campos
 */
 
 class SyntaxAnalyzer {
 
-  // For ease, store the terminal literals in a List
+  /** For ease, store the terminal literals in a List*/
   val ARTICLES : List[String] = List("teh", "a")
   val VERBS : List[String] = List("ates", "lovez", "hatez")
   val NOUNS : List[String] = List("kat", "dawg", "rat")
   val ADJECTIVE: List[String] = List("bizarre", "hungry", "happy", "mean")
   val ADVERB:List[String] = List("accidently", "quickly", "secretly")
 
-  // Flag for errors and helper methods
+  /**Flag for errors and helper methods*/
   var errorFound : Boolean = false
   def setError() = errorFound = true
   def resetError() = errorFound = false
   def getError : Boolean = errorFound
 
 
-  // This method implements the BNF rule for a sentence <S> ::= <NP> <V> <NP>
+  /**This method implements the BNF rule for a sentence <S> ::= <NP> <V> <NP>*/
   def Sentence() = {
     resetError()
 
@@ -33,14 +33,14 @@ class SyntaxAnalyzer {
     if(!errorFound) NounPhrase()
   }
 
-  // This method implements the BNF rule for a noun phrase <NP> ::= <A> <N>
+  /** This method implements the BNF rule for a noun phrase <NP> ::= <A> <N>*/
   def NounPhrase() = {
     if(!errorFound) Article()
     if(!errorFound) Adjective()
     if(!errorFound) Noun()
   }
 
-  // This method implements the BNF rule for a verb <V> ::= ates | hatez | hatez
+  /** This method implements the BNF rule for a verb <V> ::= ates | hatez | hatez*/
   def Verb() = {
     if (VERBS contains Compiler.currentToken)
       Compiler.Scanner.getNextToken()
@@ -50,7 +50,7 @@ class SyntaxAnalyzer {
     }
   }
 
-  // This method implements the BNF rule for a noun <N> ::= dawg | kat | rat
+  /** This method implements the BNF rule for a noun <N> ::= dawg | kat | rat*/
   def Noun() = {
     if (NOUNS contains Compiler.currentToken)
       Compiler.Scanner.getNextToken()
@@ -60,7 +60,7 @@ class SyntaxAnalyzer {
       }
   }
 
-  // This method implements the BNF rule for an article <N> ::= teh | a
+  /** This method implements the BNF rule for an article <N> ::= teh | a*/
   def Article() = {
     if (ARTICLES contains Compiler.currentToken)
       Compiler.Scanner.getNextToken()
@@ -69,7 +69,7 @@ class SyntaxAnalyzer {
         setError()
       }
   }
-  // This method implements the BNF rule for an adjective <adjective> ::= bizarre | hungry | happy | mean
+  /** This method implements the BNF rule for an adjective <adjective> ::= bizarre | hungry | happy | mean*/
   def Adjective() = {
     if (ADJECTIVE contains Compiler.currentToken)
       Compiler.Scanner.getNextToken()

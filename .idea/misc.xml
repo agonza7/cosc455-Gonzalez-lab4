@@ -38,11 +38,16 @@
       <property name="caretWidth" class="java.lang.Integer" />
     </properties>
   </component>
-  <component name="EntryPointsManager">
-    <entry_points version="2.0" />
-  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="ScaladocSettings">
+    <option name="outputDir" value="C:\Users\agonc\InteliJ Files\Lab 4\SimpleCompiler\docs" />
+    <option name="additionalFlags" value="" />
+    <option name="maxHeapSize" value="" />
+    <option name="docTitle" value="SimpleCompiler documentation" />
+    <option name="verbose" value="false" />
+    <option name="openInBrowser" value="true" />
   </component>
   <component name="masterDetails">
     <states>
